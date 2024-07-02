@@ -1,0 +1,45 @@
+{% extends 'base.html'  %}
+{% load static %}
+{% block metadescription %}
+We have variety of products for your daily needs
+{% endblock %}
+
+
+{% block title %}
+Search
+{% endblock %}
+
+
+{% block content %}
+<div>
+    <p class="text-center my_search_text">You have searched for :<b>"{{query}}"</b></p>
+</div>
+
+
+
+<div class="container">
+   <div class="row mx_auto">
+       {% for title in title %}
+
+            <div class="my_bottom_margin col-9 col-sm-12 col-md-4  xol-lg-4">
+                <div class="card-body" style="width: 250px; height: 150px;">
+                        <h4>{{title.title}}</h4>
+
+                    </div>
+
+                <div class="card text-center" style="min-width:18rem;" >
+                    <a href="{{request.user.get_url}}"> <img class="card-img-top my_image" src="{{title.image.url}}"  alt="{{title.title}}" width="100px" height="300px" > </a>
+
+
+                </div>
+           </div>
+   </div>
+
+                {% empty %}
+                <div class="row mx-auto">
+                    <p class="text-center my_search_text">0 result found</p>
+       {% endfor %}
+                </div>
+</div>
+{% endblock %}
+
